@@ -1,0 +1,12 @@
+#!/bin/sh
+
+while true; do
+    read -p "Do you want to pull php-mysql-docker submodule and add a symlink to it Y/n?" yn
+    case $yn in
+        [Nn]* ) break;;
+        * )
+          git submodule update --init --remote docker;
+          ln -s $(pwd)/docker/bin $(pwd)/bin/docker;
+          break;;
+    esac
+done
